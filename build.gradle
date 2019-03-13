@@ -55,6 +55,23 @@ compileJava {
 }
 */
 
+
+// comment in to get eclipse run configuration to work
+/*
+eclipse {
+	classpath {
+		file {
+			whenMerged {
+				entries.findAll { (it.properties.kind.equals('src') || it.properties.kind.equals('lib')) && it.entryAttributes.get('gradle_scope').equals('generated') }.each {
+					it.entryAttributes['gradle_used_by_scope'] = 'generated,main'
+				}
+			}
+		}
+	}
+}
+*/
+
+
 task generate() {
 	doLast {
 		
